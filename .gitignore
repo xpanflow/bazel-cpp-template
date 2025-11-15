@@ -1,0 +1,7 @@
+# Copyright (c) 2022-2024 Xiao Pan
+
+/bazel-*
+/.idea/
+/.vscode/
+*.swp
+

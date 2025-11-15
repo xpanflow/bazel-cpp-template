@@ -1,0 +1,15 @@
+{
+    "name": "Bazel C++17 starter",
+    "remoteUser": "ubuntu",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": ["BazelBuild.vscode-bazel", "ms-vscode.cpptools"],
+            "settings": {
+                "C_Cpp.clang_format_path": "/usr/bin/clang-format-18"
+            }
+        }
+    }
+}

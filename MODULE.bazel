@@ -1,0 +1,7 @@
+# Copyright (c) 2022-2024 Xiao Pan
+
+module(name = "cpp_starter")
+
+bazel_dep(name = "rules_cc", version = "0.2.28")
+
+bazel_dep(name = "googletest", version = "1.18.0.bcr.1", dev_dependency = True)

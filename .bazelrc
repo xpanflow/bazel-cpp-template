@@ -1,0 +1,37 @@
+# Copyright (c) 2022-2024 Xiao Pan
+
+# Dependencies
+common --enable_bzlmod
+common --noenable_workspace
+
+# Default build
+build --cxxopt=-std=c++17
+build --compilation_mode=dbg
+
+# Build profiles
+build:debug --compilation_mode=dbg
+build:release --compilation_mode=opt
+
+# Tests and coverage
+test --test_output=errors
+coverage --combined_report=lcov
+# Set an instrumentation filter once source and test packages diverge.
+# coverage --instrumentation_filter=^//src[/:]
+
+# Optional GCC and Clang checks
+# Use --config=warnings for compiler diagnostics on C++ targets.
+build:warnings --cxxopt=-Wall
+build:warnings --cxxopt=-Wextra
+build:warnings --cxxopt=-Wpedantic
+
+# Use bazel test --config=asan //... to look for memory errors on Linux.
+build:asan --copt=-fsanitize=address
+build:asan --copt=-fno-omit-frame-pointer
+build:asan --linkopt=-fsanitize=address
+
+# CI
+common:ci --lockfile_mode=error
+common:ci --color=no
+common:ci --curses=no
+# Example once your project has a remote cache service.
+# build:ci --remote_cache=grpcs://cache.example.com
